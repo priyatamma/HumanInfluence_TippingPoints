@@ -1,19 +1,18 @@
 # HumanInfluence_TippingPoints
 Codes and data for reconstructing the state diagrams.
 
-# I. Determining the Natural and the Human-impacted areas
+# I. Determining 'Natural' and 'Human-impacted' areas
 The HII raster was aggregated to 25degrees (so that it is consistent with the scale at which the EVI and the climate data was considered). Following this, it was imported into R 
-library(raster)
-dat <- raster('hiiraster.tif')
+    library(raster)
+    dat <- raster('hiiraster.tif')
 Following this, the density kernel for the raster was generated using density(). The values corresponding to the 15th, 25th, and 33rd percentiles (henceforth thresholds) were obtained. 
 
 The HII raster was then imported into QGIS. Using RasterCaluclator (Raster --> RasterCaluclator), all pixels with values above and below the thresholds were obtained and saved separately. For instance,
-  <HII Raster> >=4.1 [saved as human-impacted for 25th percentile]
-  <HII Raster> <4.1 [saved as natural for 25th percentile]
-
+    <HII Raster> >=4.1 [saved as human-impacted for 25th percentile]
+    <HII Raster> <4.1 [saved as natural for 25th percentile]
 Each of these clipped rasters were then polygonised for future masking.
 
-# I. Constructing the state diagram: 
+# II. Constructing the state diagram: 
 CODE: xxxx.R (from step b to e)
 The entire procedure is performed separately for the human-impacted and the natural regions.
 To construct the state diagram we follow a previously established method. The steps are descrobed below.
@@ -29,7 +28,7 @@ This raster was then 'Polygonised' in QGIS to obtain the shapefile for the regio
 
   e. The modes were then input into R and state diagram was plotted. (See below for data in case you want to reproduce the plots)
   
-# II. Data for plotting the state diagram
+# III. Data for plotting the state diagram
 The data for plotting the state diagram is included in the EXCEL sheet named ''. The column names are:
   Bin: corresponding to the 50 units CEP bin 
   Mode: One or two modes determined from the histogram (see above)
